@@ -1,4 +1,4 @@
-export default {
+const translations = {
   common: {
     seeAll: "See all",
     back: "Back",
@@ -77,3 +77,5 @@ export default {
     },
   }
 };
+
+export default translations;

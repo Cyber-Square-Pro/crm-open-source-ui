@@ -38,7 +38,6 @@ export const RoutesData: { [key: string]: RouteDataType } = {
     path: ROUTES.termsAndConditions,
     component: TermsAndConditionsPage,
     isPrivate: false,
-    isMonkeysRemove: true,
   }
 };
 
@@ -64,7 +63,6 @@ export default function WebRoutes() {
                   ) : (
                     <Public
                       element={item.component}
-                      isMonkeysRemove={item.isMonkeysRemove}
                     />
                   )
                 }

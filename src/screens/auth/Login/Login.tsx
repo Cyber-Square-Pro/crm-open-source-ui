@@ -7,19 +7,14 @@ import { useForm } from "react-hook-form";
 import TextButton from "../../../components/atoms/buttons/TextButton";
 import { useNavigate } from "react-router";
 import { ROUTES } from "../../../utils/constants/routes";
-import { handleInputErrors } from "../../../utils/helpers/errorHandler";
 import { useLoginMutation } from "../../../utils/api/baseSlice";
-import { MobileContext } from "../../../App";
-import SideContent from "../../../components/atoms/logoButton";
 
-const LoginComponent: React.FC<{}> = ({}) => {
+const LoginComponent: React.FC<any> = () => {
   const [login, { isLoading: isUpdating }] = useLoginMutation();
 
   const { t, i18n } = useTranslation("translation", {
     keyPrefix: "pages.login",
   });
-
-  const value = React.useContext(MobileContext);
 
   const LoginSchema = yup.object().shape({
     email: yup
@@ -31,7 +26,6 @@ const LoginComponent: React.FC<{}> = ({}) => {
 
   const {
     handleSubmit,
-    setError,
     register,
     formState: { errors },
   } = useForm({
@@ -44,17 +38,12 @@ const LoginComponent: React.FC<{}> = ({}) => {
     let res: any = await login(data);
     if (!res.data?.success) {
       if (res.error?.data) {
-        //handleInputErrors(res.error?.data, setError);
       }
     }
   };
 
   return (
     <div className="flex justify-center items-center">
-      <div className="flex">
-        <SideContent/>
-      </div>
-      <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-between lg:justify-center h-full gap-[35px]"
@@ -84,7 +73,6 @@ const LoginComponent: React.FC<{}> = ({}) => {
               title={t("password")}
             />
             <div className="flex flex-row justify-between">
-              <p></p>
               <TextButton
                 label={t("forgot")}
                 onClick={() => {
@@ -115,7 +103,6 @@ const LoginComponent: React.FC<{}> = ({}) => {
           </p>
         </div>
       </form>
-      </div>
     </div>
   );
 };
