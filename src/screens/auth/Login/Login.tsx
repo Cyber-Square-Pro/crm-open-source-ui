@@ -43,7 +43,7 @@ const LoginComponent: React.FC<any> = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center h-full">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-between lg:justify-center h-full gap-[35px]"
@@ -53,7 +53,7 @@ const LoginComponent: React.FC<any> = () => {
             <p className="text-black text-start lg:text-center text-[20px] font-bold">
               {t("title")}
             </p>
-            <p className="text-[#FFFFFF] text-start lg:text-center text-[14px] ">
+            <p className="text-black text-start lg:text-center text-[14px] ">
               {t("description")}
             </p>
           </div>
@@ -64,6 +64,7 @@ const LoginComponent: React.FC<any> = () => {
               placeholder=""
               register={register}
               title={t("email")}
+              labelColor="black"
             />
             <Password
               error={errors.password}

@@ -41,7 +41,7 @@ const IconButton: React.FC<ButtonProps> = ({
       {isLoading ? (
         <ClipLoader color={"#ffffff"} size={22} />
       ) : (
-        <img src={icon} className={`${SizeConfig[size]}`} />
+        <img src={icon} className={`${SizeConfig[size]}`} alt="icon" />
       )}
 
       {label ? label : null}

@@ -49,7 +49,7 @@ const translations = {
       title: "Sign Up",
       description: "Register for a email.",
       fullName: "Full Name*",
-      email: "Registered AngryMonky Email Address*",
+      email: "Email Address*",
       password: "Password*",
       confirmPassword: "Confirm Password*",
       referralCode: "Referral Code",

@@ -1,14 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import {
   language,
 } from "../../../assets/icons";
-import {
-  useProfileQuery,
-} from "../../../utils/api/baseSlice";
 import IconButtonDropdown from "../../atoms/iconDropdown";
 import Search from "../../atoms/Search";
-import { useMediaQuery } from "@mui/material";
 import i18n from "../../../utils/i18n/i18n";
 import { useTranslation } from "react-i18next";
 
@@ -24,11 +19,6 @@ const DashboardWrapper: React.FC<Props> = ({
   defaultSearch = null,
 }) => {
   const { t } = useTranslation("translation", { keyPrefix: "constants" });
-  const navigate = useNavigate();
-
-  const query = useMediaQuery("(max-width:400px)");
-
-  const { data, isLoading: isSizeLoading }: any = useProfileQuery({});
 
   const handleOption1Click = () => {
     // console.log("Option 1 clicked");

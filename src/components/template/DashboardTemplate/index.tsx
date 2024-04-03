@@ -76,6 +76,7 @@ const DashboardTemplate: React.FC<Props> = ({ children }) => {
           routes={routes(t)}
           title={
             <img
+              alt="nav"
               src=""
               className="cursor-pointer w-[120px] h-[35px] md:w-[180px] md:h-[45px]"
               onClick={() => navigate(ROUTES.dashboard)}
@@ -91,6 +92,7 @@ const DashboardTemplate: React.FC<Props> = ({ children }) => {
           routes={routes(t)}
           title={
             <img
+              alt="nav"
               src=""
               className="cursor-pointer w-[120px] h-[35px] md:w-[180px] md:h-[45px]"
               onClick={() => navigate(ROUTES.dashboard)}

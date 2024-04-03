@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Password from "../../../components/atoms/Input/Password";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../utils/constants/routes";
 import yup from "../../../utils/validations/yup";
 import { useResetPasswordMutation } from "../../../utils/api/baseSlice";
 import { useTranslation } from "react-i18next";
 import { Button, IconButton } from "../../../components/atoms";
-import { handleInputErrors } from "../../../utils/helpers/errorHandler";
 import Status from "../../../components/molecules/status";
 import { back } from "../../../assets/icons";
 
@@ -37,14 +36,13 @@ export default function ResetPassword() {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(ResetPasswordSchema),
   });
 
   const { state } = useLocation();
-  const { email, accessToken, otp } = state;
+  const { email, otp } = state;
 
   const navigate = useNavigate();
 
@@ -58,7 +56,6 @@ export default function ResetPassword() {
     if (res.data?.success) {
       setPasswordReseted(true);
     } else {
-      // handleInputErrors(res.error?.data, setError);
     }
   };
 

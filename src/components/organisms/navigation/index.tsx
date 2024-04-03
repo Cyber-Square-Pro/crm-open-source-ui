@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router";
 import { ROUTES } from "../../../utils/constants/routes";
 import { IconButton } from "../../atoms";
@@ -22,7 +21,6 @@ type Props = {
 const Navigation: React.FC<Props> = ({ children, title, routes, footer }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
 
   return (
     <div className="flex flex-row	h-full hideScroll">

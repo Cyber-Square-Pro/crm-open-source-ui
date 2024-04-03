@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button, CheckBox, Input, Password } from "../../../components/atoms";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,21 +8,12 @@ import TextButton from "../../../components/atoms/buttons/TextButton";
 import { useNavigate } from "react-router";
 import { ROUTES } from "../../../utils/constants/routes";
 import { useSignUpMutation } from "../../../utils/api/baseSlice";
-import { handleInputErrors } from "../../../utils/helpers/errorHandler";
-import { MobileContext } from "../../../App";
 
-const SignUpComponent: React.FC<{}> = ({}) => {
-  const [success, setSuccess] = useState({
-    userId: null,
-    email: "",
-    success: false,
-  });
+const SignUpComponent: React.FC<any> = () => {
   const [signUp, { isLoading: isUpdating }] = useSignUpMutation();
   const { t, i18n } = useTranslation("translation", {
     keyPrefix: "pages.signUp",
   });
-
-  const value = React.useContext(MobileContext);
 
   const SignUpSchema = yup.object().shape({
     fullName: yup.string().required(i18n.t("errorMessages.required") || ""),
@@ -50,7 +41,6 @@ const SignUpComponent: React.FC<{}> = ({}) => {
 
   const {
     handleSubmit,
-    setError,
     register,
     formState: { errors },
   } = useForm({
@@ -66,29 +56,24 @@ const SignUpComponent: React.FC<{}> = ({}) => {
     let res: any = await signUp(data);
 
     if (res.data?.success) {
-      setSuccess({
-        userId: res?.data?.data?.userId || null,
-        email: res?.data?.data?.email || "",
-        success: true,
-      });
+      
     } else {
       if (res.error?.data) {
-        // handleInputErrors(res.error?.data, setError);
       }
     }
   };
  
   return (
     <form
-      className="flex flex-col justify-between lg:justify-center lg:h-full gap-[35px]"
+      className="flex flex-col items-center justify-between lg:justify-center lg:h-full gap-[35px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
         <div className="mt-[150px] mb-[30px] lg:mt-[5px]">
-          <p className="text-[#ECBE44] text-start lg:text-center text-[20px] font-bold">
+          <p className="text-black text-start lg:text-center text-[20px] font-bold">
             {t("title")}
           </p>
-          <p className="text-[#FFFFFF] text-start lg:text-center text-[14px] ">
+          <p className="text-black text-start lg:text-center text-[14px] ">
             {t("description")}
           </p>
         </div>
@@ -99,6 +84,7 @@ const SignUpComponent: React.FC<{}> = ({}) => {
             placeholder=""
             register={register}
             title={t("fullName")}
+            labelColor= "black"
           />
           <Input
             error={errors.email}
@@ -106,6 +92,7 @@ const SignUpComponent: React.FC<{}> = ({}) => {
             placeholder=""
             register={register}
             title={t("email")}
+            labelColor= "black"
           />
           <Password
             error={errors.password}

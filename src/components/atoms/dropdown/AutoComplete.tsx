@@ -147,6 +147,7 @@ const AutoComplete: React.FC<Props> = ({
           {list?.map((val, index) => (
             <li key={`${val}-${index}`} className=" ">
               <a
+                href="#target"
                 onClick={() => {
                   setValue(val);
                   onChange(val);

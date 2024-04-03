@@ -70,6 +70,7 @@ export default function CountrySelect({ onChange, value, disabled }: Props) {
               startAdornment: (
                 <>
                   <img
+                    alt="country"
                     className="pl-[10px] w-8"
                     src={url}
                     onError={({ currentTarget }) => {

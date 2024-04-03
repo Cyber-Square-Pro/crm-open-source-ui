@@ -76,6 +76,7 @@ export default function Dropdown({
                 onChange(val.value);
                 setHidden(!hidden);
               }}
+              href="/"
               className="px-4 py-2 text-sm flex justify-between cursor-pointer"
             >
               {val.label}

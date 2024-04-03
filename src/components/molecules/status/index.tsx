@@ -19,7 +19,7 @@ const Status: React.FC<Props> = ({
   return (
     <>
       <div className=" flex flex-col items-center gap-10">
-        <img src={icon} className=" w-28" />
+        <img src={icon} className=" w-28" alt="s" />
         <div>
           <p className="text-center pb-2 text-primary font-bold text-2xl">
             {title}

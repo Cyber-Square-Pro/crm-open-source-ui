@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button, IconButton, Input } from "../../../components/atoms";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,19 +7,10 @@ import { useForm } from "react-hook-form";
 import { back } from "../../../assets/icons";
 import { useNavigate } from "react-router";
 import { ROUTES } from "../../../utils/constants/routes";
-import { useForgotPasswordMutation } from "../../../utils/api/baseSlice";
-import { MobileContext } from "../../../App";
 
-const ForgotPasswordComponent: React.FC<{}> = ({}) => {
-  const [success, setSuccess] = useState({
-    userId: null,
-    email: "",
-    success: false,
-  });
-  const [forgotPassword, { data: forgotData, isLoading: isUpdating }] =
-    useForgotPasswordMutation();
+const ForgotPasswordComponent: React.FC<any> = () => {
+  
 
-    const value = React.useContext(MobileContext);
 
   const { t, i18n } = useTranslation("translation", {
     keyPrefix: "pages.forgotPassword",
@@ -34,7 +25,6 @@ const ForgotPasswordComponent: React.FC<{}> = ({}) => {
 
   const {
     handleSubmit,
-    setError,
     register,
     formState: { errors },
   } = useForm({
@@ -44,25 +34,14 @@ const ForgotPasswordComponent: React.FC<{}> = ({}) => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
-    let res: any = await forgotPassword(data);
-    if (res.data?.success) {
-      setSuccess({
-        userId: res?.data?.data?.userId || null,
-        email: res?.data?.data?.email || "",
-        success: true,
-      });
-    } else {
-      if (res.error?.data) {
-        // handleInputErrors(res.error?.data, setError);
-      }
-    }
+   
   };
 
  
 
   return (
     <form
-      className="flex flex-col justify-between lg:justify-center h-full gap-[45px]"
+      className="flex flex-col justify-between lg:justify-center h-full gap-[45px] w-full items-center"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col mt-[150px] lg:mt-[5px] gap-[30px]">
@@ -90,6 +69,7 @@ const ForgotPasswordComponent: React.FC<{}> = ({}) => {
           placeholder=""
           register={register}
           title={t("email")}
+          labelColor="black"
         />
       </div>
       <div className="flex flex-col mb-[50px]">
@@ -98,7 +78,6 @@ const ForgotPasswordComponent: React.FC<{}> = ({}) => {
           size="large"
           textColor="#FFFFFF"
           type="submit"
-          isLoading={isUpdating}
         />
       </div>
     </form>

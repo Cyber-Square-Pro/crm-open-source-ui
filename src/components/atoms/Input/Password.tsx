@@ -23,10 +23,11 @@ export default function Password({
   return (
     <div>
       <div className="flex justify-between">
-        <p className="text-[14px] text-white ml-1 mb-2">{title}</p>
+        <p className="text-[14px] text-black ml-1 mb-2">{title}</p>
       </div>
       <div className="relative h-[46px]">
         <input
+          value={value}
           type={showPassword ? "password" : "text"}
           onChange={(e) => {
             setValue(e.target.value);

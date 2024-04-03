@@ -1,10 +1,7 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 const List: React.FC<{ title: string; data: any[] }> = ({ title, data }) => {
-  const { t, i18n } = useTranslation("translation", {
-    keyPrefix: "pages.myNft.productDetails.deliveryDetails",
-  });
+  
 
   return (
     <div>
