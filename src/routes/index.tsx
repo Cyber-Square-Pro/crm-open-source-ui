@@ -11,7 +11,6 @@ import { ROUTES } from "../utils/constants/routes";
 import { RouteDataType } from "./types";
 import { GlobalDialog } from "../components/organisms";
 import { BaseTemplate } from "../components/template";
-import TermsAndConditionsPage from "../screens/termsAndConditions";
 
 export const RoutesData: { [key: string]: RouteDataType } = {
   base: {
@@ -34,11 +33,6 @@ export const RoutesData: { [key: string]: RouteDataType } = {
     component: ResetPassword,
     isPrivate: false,
   },
-  termsAndConditions: {
-    path: ROUTES.termsAndConditions,
-    component: TermsAndConditionsPage,
-    isPrivate: false,
-  }
 };
 
 export default function WebRoutes() {
@@ -46,7 +40,6 @@ export default function WebRoutes() {
     <>
       <BaseTemplate key={"any"}>
         <GlobalDialog key={"GlobalDialog"} />
-        {/* <UnderMaintenance /> */}
         <DomRoutes key={"DomRoutes"}>
           {Object.keys(RoutesData).map((route, index) => {
             let item: RouteDataType = RoutesData[route];
