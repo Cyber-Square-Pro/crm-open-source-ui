@@ -16,7 +16,6 @@ export default function Password({
   error,
   title,
 }: Props) {
-  const [value, setValue] = useState("");
   const [showPassword, setShowPassword] = useState(true);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
@@ -27,11 +26,7 @@ export default function Password({
       </div>
       <div className="relative h-[46px]">
         <input
-          value={value}
           type={showPassword ? "password" : "text"}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
           className={`text-white bg-[#1C1F2C] h-full bg-opacity-80 my-auto border text-start border-primary w-full focus:border-primary focus:outline-none  rounded-[10px] text-sm px-4 py-2.5 inline-flex items-center `}
           placeholder={placeholder}
           {...register(name, { required: true })}
