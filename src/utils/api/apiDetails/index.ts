@@ -25,8 +25,8 @@ export const mutations: CustomEndPoints = {
     method: "POST",
   },
   signUp: {
-    url: "/register",
-    transformResponse: (res) => commonTransform(res),
+    url: "/signup",
+    transformResponse: (res) => loginTransform(res),
     method: "POST",
   },
   forgotPassword: {

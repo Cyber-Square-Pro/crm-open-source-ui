@@ -12,7 +12,7 @@ import { ROUTES } from "../constants/routes";
 import { getAccessToken, getRefreshToken } from "../helpers/helpers";
 
 const mutex = new Mutex();
-const baseUrl = `${API_END_POINT}api/v1/`;
+const baseUrl = `${API_END_POINT}api/`;
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,

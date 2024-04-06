@@ -16,7 +16,7 @@ const SignUpComponent: React.FC<any> = () => {
   });
 
   const SignUpSchema = yup.object().shape({
-    fullName: yup.string().required(i18n.t("errorMessages.required") || ""),
+    name: yup.string().required(i18n.t("errorMessages.required") || ""),
     email: yup
       .string()
       .email(i18n.t("errorMessages.validEmail") || "")
@@ -47,6 +47,7 @@ const SignUpComponent: React.FC<any> = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
+
   const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
@@ -56,13 +57,10 @@ const SignUpComponent: React.FC<any> = () => {
     let res: any = await signUp(data);
 
     if (res.data?.success) {
-      
-    } else {
-      if (res.error?.data) {
-      }
+
     }
   };
- 
+
   return (
     <form
       className="flex flex-col items-center justify-between lg:justify-center lg:h-full gap-[35px]"
@@ -79,12 +77,12 @@ const SignUpComponent: React.FC<any> = () => {
         </div>
         <div className="flex flex-col gap-2">
           <Input
-            error={errors.fullName}
-            name="fullName"
+            error={errors.name}
+            name="name"
             placeholder=""
             register={register}
             title={t("fullName")}
-            labelColor= "black"
+            labelColor="black"
           />
           <Input
             error={errors.email}
@@ -92,7 +90,7 @@ const SignUpComponent: React.FC<any> = () => {
             placeholder=""
             register={register}
             title={t("email")}
-            labelColor= "black"
+            labelColor="black"
           />
           <Password
             error={errors.password}
